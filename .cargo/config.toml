@@ -1,0 +1,25 @@
+# LLD Installation
+# Ubuntu: sudo apt-get install lld clang
+
+# Fedora: sudo dnf install lld clang
+
+# Arch: sudo pacman -S lld clang
+
+# Windows: Ensure you have the latest cargo-binutils as this lets commands like cargo run use the LLD linker automatically.
+# cargo install -f cargo-binutils
+# rustup component add llvm-tools-preview
+
+# for Windows
+[target.x86_64-pc-windows-msvc]
+linker = "rust-lld.exe"
+
+# # for Linux
+# [target.x86_64-unknown-linux-gnu]
+# linker = "clang"
+# rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+  # (Nightly) Make the current crate share its generic instantiations
+  "-Zshare-generics=y",
+]

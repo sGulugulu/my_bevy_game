@@ -1,6 +1,6 @@
-use bevy::prelude::*;
+use bevy::prelude::Event;
 
 #[derive(Event)]
-pub struct GameOver {
+pub struct GameOver{
     pub score: u32,
 }
